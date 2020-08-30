@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css">
+  <script src="/jquery/dist/jquery.min.js"></script>
+  <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+</head>
+
+<body class="bg-light">
+  <div class="text-center border-dark"
+    style="width:600px; margin:100px auto; background-color: white; border-radius: 20px; padding: 60px 150px; border:lightgray solid">
+    <img src="favicon.png" width="120px" </div>
+    <h3 style="margin:10px">电协人员管理系统</h3>
+    <p class="from-group">
+      <input type="text" id="account" class="form-control" placeholder="请输入账号">
+    </p>
+    <p class="from-group">
+      <input type="password" id="password" class="form-control" placeholder="请输入密码">
+    </p>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox">记住我
+      </label>
+      <!-- Button trigger modal -->
+      <a href="#" class="card-link ml-5" data-toggle="modal" data-target="#retrievePwd">
+        忘记密码
+      </a>
+      <a href="#" class="card-link ml-5" data-toggle="modal" data-target="#register">
+        注册
+      </a>
+
+      <!-- Modal -->
+      <div class="modal fade" id="retrievePwd" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">找回密码</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group row">
+                <label for="email" class="col-form-label col-2">邮箱</label>
+                <input type="email" class="form-control col-9" name="email" id="email" placeholder="请输入注册邮箱">
+              </div>
+              <div class="form-group row">
+                <label for="captcha" class="col-form-label col-2">验证码</label>
+                <input type="captcha" class="form-control col-9" name="captcha" id="captcha" placeholder="请输入验证码">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal">提交</button>
+              <button type="button" class="btn btn-primary">发送验证码</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="register" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">用户注册</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group row">
+                <label for="email" class="col-form-label col-3">邮箱</label>
+                <input type="email" class="form-control col-8" name="email" id="email" placeholder="请输入注册邮箱">
+              </div>
+              <div class="form-group row">
+                <label for="captcha" class="col-form-label col-3">验证码</label>
+                <input type="text" class="form-control col-8" name="captcha" id="captcha" placeholder="请输入验证码">
+              </div>
+              <div class="form-group row">
+                <label for="password" class="col-form-label col-3">密码</label>
+                <input type="password" class="form-control col-8" name="password" id="password" placeholder="请输入密码">
+              </div>
+              <div class="form-group row">
+                <label for="confirmPwd" class="col-form-label col-3">确认密码</label>
+                <input type="password" class="form-control col-8" name="confirmPwd" id="confirmPwd"
+                  placeholder="请再次输入密码">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal" id="submit">提交</button>
+              <button type="button" class="btn btn-primary">发送验证码</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-primary" type="login" id="login">登录</button>
+  </div>
+  <!-- Modal -->
+  <div class="modal fade" id="error" tabindex="-1" role="dialog"">
+    <div class=" modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <p class="modal-title text-center">登录失败，请重试</p>
+      </div>
+    </div>
+  </div>
+  </div>
+  <footer class="navbar-fix-bottom">
+    <p class="text-center">© 2020 网络组</p>
+  </footer>
+</body>
+<script>
+  $('#login').click(function () {
+    var account = $('#account').val();
+    if (!account) {
+      $('#error .modal-title').text('账号不能为空');
+      $('#error').modal('show');
+      setTimeout(() => {
+        $('#error').modal('hide');
+      }, 1000);
+      return false;
+    }
+    var password = $('#password').val();
+    if (!password) {
+      $('#error .modal-title').text('密码不能为空');
+      $('#error').modal('show');
+      setTimeout(() => {
+        $('#error').modal('hide');
+      }, 1000);
+      return false;
+    }
+    // Ajax请求
+    location.href = 'index.html';
+  })
+  $('#submit').click(function () {
+    var registerPwd = $('#registerPwd');
+    if (registerPwd.length < 6) {
+      $('#error .modal-title').text('密码长度不少于6位');
+      $('#error').modal('show');
+      setTimeout(() => {
+        $('#error').modal('hide');
+      }, 1000);
+      return false;
+    }
+  })
+</script>
+
+</html>

@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css">
+
+  <title>管理页面</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">ELC 人员管理系统</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#accountInfo">账户信息<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#accessControl">权限管理</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">账号设置</a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">注销</a>
+            <a class="dropdown-item" href="#">切换</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">其他</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#">@username</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜索</button>
+      </form>
+    </div>
+  </nav>
+  <div class="container row my-4" id="accountInfo">
+    <!-- 网页内容写在这里面 -->
+    <div <div class="col-3">
+      <ul class="nav nav-pills flex-column " id="myTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link text-center">账号设置</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active text-center" id="mydata-tab" data-toggle="tab" href="#mydata" role="tab"
+            aria-controls="mydata" aria-selected="true">个人资料</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-center" id="password-tab" data-toggle="tab" href="#password" role="tab"
+            aria-controls="password" aria-selected="false">修改密码</a>
+        </li>
+        <li class="nav-item mt-2">
+          <a class="nav-link text-center">权限管理</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-center" id="usersData-tab" data-toggle="tab" href="#usersData" D role="tab"
+            aria-controls="usersData" arDia-selected="true">用户名单</a>
+        </li>
+      </ul>
+    </div>
+    <div class="tab-content col ml-5" id="myTabContent">
+      <div class="tab-pane fade show active" id="mydata" role="tabpanel" aria-labelledby="mydata-tab">
+        <form>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="userName">用户名</label>
+              <input type="text" class="form-control" id="userName" placeholder="xxx">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputEmail4">邮箱</label>
+              <input type="email" class="form-control" id="inputEmail4" placeholder="xxx@example.com">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="name">姓名</label>
+              <input type="text" class="form-control" id="name" placeholder="xxx">
+            </div>
+            <div class="form-group col-md-3">
+              <label for="age">年龄</label>
+              <input type="number" class="form-control" id="age" placeholder="0">
+            </div>
+            <div class="form-group col-md-3">
+              <label for="inputState">性别</label>
+              <select id="inputState" class="form-control">
+                <option selected>男</option>
+                <option>女</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputCity">生日</label>
+              <input type="date" class="form-control" id="inputCity">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputZip">个人主页</label>
+              <input type="url" class="form-control" id="inputZip">
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">提交</button>
+          <button type="reset" class="btn btn-primary">重置</button>
+        </form>
+      </div>
+      <div class="tab-pane fade" id="password" role="tabpanel" aria-labelledby="password-tab">
+        <form>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="exampleInputPassword1">原密码</label>
+              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="exampleInputPassword1">新密码</label>
+              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="exampleInputPassword1">确认密码</label>
+              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="">
+            </div>
+          </div>
+        </form>
+        <button type="submit" class="btn btn-primary">提交</button>
+      </div>
+      <div class="tab-pane fade" id="usersData" role="tabpanel" aria-labelledby="userData-tab">
+        <form>
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">用户名</th>
+                <th scope="col">权限</th>
+                <th scope="col">修改</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>管理员</td>
+                <td>
+                  <select>
+                    <option>管理员</option>
+                    <option>普通成员</option>
+                    <option>游客</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>普通成员</td>
+                <td>
+                  <select>
+                    <option>管理员</option>
+                    <option>普通成员</option>
+                    <option>游客</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Larry</td>
+                <td>游客</td>
+                <td>
+                  <select>
+                    <option>管理员</option>
+                    <option>普通成员</option>
+                    <option>游客</option>
+                  </select>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <button type="submit" class="btn btn-primary">提交</button>
+          <button type="reset" class="btn btn-primary">重置</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="jquery/dist/jquery.min.js"></script>
+  <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>
