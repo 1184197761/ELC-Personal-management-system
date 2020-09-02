@@ -8,6 +8,15 @@
   <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css">
   <script src="/jquery/dist/jquery.min.js"></script>
   <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+  <style>
+    input:valid {
+      border: 2px solid green;
+    }
+
+    input:invalid {
+      border: 2px solid red;
+    }
+  </style>
 </head>
 
 <body class="bg-light">
@@ -16,7 +25,7 @@
     <img src="favicon.png" width="120px" </div>
     <h3 style="margin:10px">电协人员管理系统</h3>
     <p class="from-group">
-      <input type="text" id="account" class="form-control" placeholder="请输入账号">
+      <input type="text" id="userName" class="form-control" placeholder="请输入账号">
     </p>
     <p class="from-group">
       <input type="password" id="password" class="form-control" placeholder="请输入密码">
@@ -37,113 +46,198 @@
       <div class="modal fade" id="retrievePwd" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">找回密码</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <div class="form-group row">
-                <label for="email" class="col-form-label col-2">邮箱</label>
-                <input type="email" class="form-control col-9" name="email" id="email" placeholder="请输入注册邮箱">
+            <form>
+              <div class="modal-header">
+                <h5 class="modal-title">找回密码</h5>
+                <button type="button" class="close" data-dismiss="modal">
+                  <span aria-hidden="true">&times;</span>
+                </button>
               </div>
-              <div class="form-group row">
-                <label for="captcha" class="col-form-label col-2">验证码</label>
-                <input type="captcha" class="form-control col-9" name="captcha" id="captcha" placeholder="请输入验证码">
+              <div class="modal-body">
+                <div class="form-group row">
+                  <label for="pwdEmail" class="col-form-label col-2">邮箱</label>
+                  <input type="email" class="form-control col-9" name="pwdEmail" id="pwdEmail" placeholder="请输入注册邮箱"
+                    required>
+                </div>
+                <div class="form-group row">
+                  <label for="pwdCaptcha" class="col-form-label col-2">验证码</label>
+                  <input type="pwdCaptcha" class="form-control col-9" name="pwdCaptcha" id="pwdCaptcha"
+                    placeholder="请输入验证码" required>
+                </div>
               </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary" data-dismiss="modal">提交</button>
-              <button type="button" class="btn btn-primary">发送验证码</button>
-            </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" id="pwdSubmit">提交</button>
+                <button type="button" class="btn btn-primary" id="sendPwdCaptcha">发送验证码</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
-      <div class="modal fade" id="register" tabindex="-1" role="dialog">
+      <div class=" modal fade" id="register" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">用户注册</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <div class="form-group row">
-                <label for="email" class="col-form-label col-3">邮箱</label>
-                <input type="email" class="form-control col-8" name="email" id="email" placeholder="请输入注册邮箱">
+            <form>
+              <div class="modal-header">
+                <h5 class="modal-title">用户注册</h5>
+                <button type="button" class="close" data-dismiss="modal">
+                  <span aria-hidden="true">&times;</span>
+                </button>
               </div>
-              <div class="form-group row">
-                <label for="captcha" class="col-form-label col-3">验证码</label>
-                <input type="text" class="form-control col-8" name="captcha" id="captcha" placeholder="请输入验证码">
+              <div class="modal-body">
+                <div class="form-group row">
+                  <label for="regEmail" class="col-form-label col-3">邮箱</label>
+                  <input type="email" class="form-control col-8" name="regEmail" id="regEmail" placeholder="请输入注册邮箱"
+                    required>
+                </div>
+                <div class=" form-group row">
+                  <label for="regCaptcha" class="col-form-label col-3">验证码</label>
+                  <input type="text" class="form-control col-8" name="regCaptcha" id="regCaptcha" placeholder="请输入验证码"
+                    required>
+                </div>
+                <div class="form-group row">
+                  <label for="registerPwd" class="col-form-label col-3">密码</label>
+                  <input type="password" class="form-control col-8" name="registerPwd" id="registerPwd"
+                    placeholder="请输入密码" required minlength="6" maxlength="12">
+                </div>
+                <div class="form-group row">
+                  <label for="confirmPwd" class="col-form-label col-3">确认密码</label>
+                  <input type="password" class="form-control col-8" name="confirmPwd" id="confirmPwd"
+                    placeholder="请再次输入密码" required>
+                </div>
               </div>
-              <div class="form-group row">
-                <label for="password" class="col-form-label col-3">密码</label>
-                <input type="password" class="form-control col-8" name="password" id="password" placeholder="请输入密码">
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" id="regSubmit">提交</button>
+                <button type="button" class="btn btn-primary" id="sendCaptcha">发送验证码</button>
               </div>
-              <div class="form-group row">
-                <label for="confirmPwd" class="col-form-label col-3">确认密码</label>
-                <input type="password" class="form-control col-8" name="confirmPwd" id="confirmPwd"
-                  placeholder="请再次输入密码">
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary" data-dismiss="modal" id="submit">提交</button>
-              <button type="button" class="btn btn-primary">发送验证码</button>
-            </div>
+            </form>
           </div>
         </div>
       </div>
     </div>
     <button class="btn btn-primary" type="login" id="login">登录</button>
-  </div>
-  <!-- Modal -->
-  <div class="modal fade" id="error" tabindex="-1" role="dialog"">
-    <div class=" modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-body">
-        <p class="modal-title text-center">登录失败，请重试</p>
+    <!-- Modal -->
+    <div class="modal fade" id="error" tabindex="-1" role="dialog">
+      <div class=" modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <p class="modal-title text-center">登录失败，请重试</p>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
   </div>
   <footer class="navbar-fix-bottom">
     <p class="text-center">© 2020 网络组</p>
   </footer>
+  <!-- Code injected by live-server -->
+  <script type="text/javascript">
+    // <![CDATA[  <-- For SVG support
+    if ('WebSocket' in window) {
+      (function () {
+        function refreshCSS() {
+          var sheets = [].slice.call(document.getElementsByTagName("link"));
+          var head = document.getElementsByTagName("head")[0];
+          for (var i = 0; i < sheets.length; ++i) {
+            var elem = sheets[i];
+            var parent = elem.parentElement || head;
+            parent.removeChild(elem);
+            var rel = elem.rel;
+            if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+              var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+              elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+            }
+            parent.appendChild(elem);
+          }
+        }
+        var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+        var address = protocol + window.location.host + window.location.pathname + '/ws';
+        var socket = new WebSocket(address);
+        socket.onmessage = function (msg) {
+          if (msg.data == 'reload') window.location.reload();
+          else if (msg.data == 'refreshcss') refreshCSS();
+        };
+        if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+          console.log('Live reload enabled.');
+          sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+        }
+      })();
+    }
+    else {
+      console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+    }
+	// ]]>
+  </script>
 </body>
 <script>
   $('#login').click(function () {
-    var account = $('#account').val();
-    if (!account) {
-      $('#error .modal-title').text('账号不能为空');
-      $('#error').modal('show');
-      setTimeout(() => {
-        $('#error').modal('hide');
-      }, 1000);
-      return false;
-    }
-    var password = $('#password').val();
-    if (!password) {
-      $('#error .modal-title').text('密码不能为空');
-      $('#error').modal('show');
-      setTimeout(() => {
-        $('#error').modal('hide');
-      }, 1000);
-      return false;
-    }
     // Ajax请求
-    location.href = 'index.html';
+    $.ajax({
+      type: "GET",
+      url: "service.php?userName=" + $('#userName').val(),
+      dateType: "json",
+      success: function (date) {
+        if (date.success) {
+          location.href = "index.html";
+        } else {
+          alert(date.msg);
+        }
+      },
+      error: function (jqXHR) {
+        alert("发生错误：" + jqXHR.status);
+      }
+    })
   })
-  $('#submit').click(function () {
-    var registerPwd = $('#registerPwd');
-    if (registerPwd.length < 6) {
-      $('#error .modal-title').text('密码长度不少于6位');
-      $('#error').modal('show');
-      setTimeout(() => {
-        $('#error').modal('hide');
-      }, 1000);
-      return false;
+
+  $('#confirmPwd').on('input', function () {
+    let regPwd = $('#registerPwd').val();
+    let confPwd = $('#confirmPwd').val();
+    if (regPwd != confPwd) {
+      document.getElementById('confirmPwd').setCustomValidity("密码不一致");
+    } else {
+      document.getElementById('confirmPwd').setCustomValidity("");
+    }
+  })
+  //发送邮件验证码
+  $('#sendCaptcha,#sendPwdCaptcha').click(function () {
+    let email = $(this).parent().prev().find('input').val();
+    let captcha = $(this).parent().prev().find('input[type=email]').val();
+    if (!email) {
+      alert('请输入邮箱地址');
+      return;
+    }
+    this.disabled = 'disabled';
+    let count = 60;
+    let interval = setInterval(() => {
+      $(this).html(count-- + '秒后重新发送');
+      if (count < 0) {
+        clearInterval(interval);
+        $(this).html('发送验证码');
+        this.disabled = '';
+      }
+    }, 1000);
+    //后台发送验证码邮件
+    $.ajax({
+      type: "POST",
+      url: "captcha.php?email=" + email,
+      dateType: "json",
+      success: function (date) {
+        if (date.success) {
+          var realCaptcha = date.msg;
+        } else {
+          alert(date.msg);
+        }
+      },
+      error: function (jqXHR) {
+        alert("发生错误：" + jqXHR.status);
+      }
+    })
+  })
+  //验证码校对
+  $('#regSubmit,#pwdSubmit').click(function () {
+    alert('验证码错误！');
+    if (captcha != realCaptcha) {
+      alert('验证码错误！');
+      return;
     }
   })
 </script>
