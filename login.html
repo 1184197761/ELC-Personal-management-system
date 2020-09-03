@@ -12,25 +12,21 @@
     input:valid {
       border: 2px solid green;
     }
-
-    input:invalid {
-      border: 2px solid red;
-    }
   </style>
 </head>
 
 <body class="bg-light">
   <div class="text-center border-dark"
     style="width:600px; margin:100px auto; background-color: white; border-radius: 20px; padding: 60px 150px; border:lightgray solid">
-    <img src="favicon.png" width="120px" </div>
-    <h3 style="margin:10px">电协人员管理系统</h3>
-    <p class="from-group">
-      <input type="text" id="userName" class="form-control" placeholder="请输入账号">
-    </p>
-    <p class="from-group">
-      <input type="password" id="password" class="form-control" placeholder="请输入密码">
-    </p>
-    <div class="checkbox">
+    <form>
+      <img src="favicon.png" width="120px" </div>
+      <h3 style="margin:10px">电协人员管理系统</h3>
+      <p class="from-group">
+        <input type="text" id="userName" class="form-control" placeholder="请输入账号" required>
+      </p>
+      <p class="from-group">
+        <input type="password" id="password" class="form-control" placeholder="请输入密码" required>
+      </p>
       <label>
         <input type="checkbox">记住我
       </label>
@@ -41,80 +37,79 @@
       <a href="#" class="card-link ml-5" data-toggle="modal" data-target="#register">
         注册
       </a>
-
-      <!-- Modal -->
-      <div class="modal fade" id="retrievePwd" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <form>
-              <div class="modal-header">
-                <h5 class="modal-title">找回密码</h5>
-                <button type="button" class="close" data-dismiss="modal">
-                  <span aria-hidden="true">&times;</span>
-                </button>
+      <button class="btn btn-primary" type="submit" id="login">登录</button>
+    </form>
+    <!-- Modal -->
+    <div class="modal fade" id="retrievePwd" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <form>
+            <div class="modal-header">
+              <h5 class="modal-title">找回密码</h5>
+              <button type="button" class="close" data-dismiss="modal">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group row">
+                <label for="pwdEmail" class="col-form-label col-2">邮箱</label>
+                <input type="email" class="form-control col-9" name="pwdEmail" id="pwdEmail" placeholder="请输入注册邮箱"
+                  required>
               </div>
-              <div class="modal-body">
-                <div class="form-group row">
-                  <label for="pwdEmail" class="col-form-label col-2">邮箱</label>
-                  <input type="email" class="form-control col-9" name="pwdEmail" id="pwdEmail" placeholder="请输入注册邮箱"
-                    required>
-                </div>
-                <div class="form-group row">
-                  <label for="pwdCaptcha" class="col-form-label col-2">验证码</label>
-                  <input type="pwdCaptcha" class="form-control col-9" name="pwdCaptcha" id="pwdCaptcha"
-                    placeholder="请输入验证码" required>
-                </div>
+              <div class="form-group row">
+                <label for="pwdCaptcha" class="col-form-label col-2">验证码</label>
+                <input type="text" class="form-control col-9" name="pwdCaptcha" id="pwdCaptcha" placeholder="请输入验证码"
+                  required>
               </div>
-              <div class="modal-footer">
-                <button type="submit" class="btn btn-primary" id="pwdSubmit">提交</button>
-                <button type="button" class="btn btn-primary" id="sendPwdCaptcha">发送验证码</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-      <div class=" modal fade" id="register" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <form>
-              <div class="modal-header">
-                <h5 class="modal-title">用户注册</h5>
-                <button type="button" class="close" data-dismiss="modal">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <div class="form-group row">
-                  <label for="regEmail" class="col-form-label col-3">邮箱</label>
-                  <input type="email" class="form-control col-8" name="regEmail" id="regEmail" placeholder="请输入注册邮箱"
-                    required>
-                </div>
-                <div class=" form-group row">
-                  <label for="regCaptcha" class="col-form-label col-3">验证码</label>
-                  <input type="text" class="form-control col-8" name="regCaptcha" id="regCaptcha" placeholder="请输入验证码"
-                    required>
-                </div>
-                <div class="form-group row">
-                  <label for="registerPwd" class="col-form-label col-3">密码</label>
-                  <input type="password" class="form-control col-8" name="registerPwd" id="registerPwd"
-                    placeholder="请输入密码" required minlength="6" maxlength="12">
-                </div>
-                <div class="form-group row">
-                  <label for="confirmPwd" class="col-form-label col-3">确认密码</label>
-                  <input type="password" class="form-control col-8" name="confirmPwd" id="confirmPwd"
-                    placeholder="请再次输入密码" required>
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button type="submit" class="btn btn-primary" id="regSubmit">提交</button>
-                <button type="button" class="btn btn-primary" id="sendCaptcha">发送验证码</button>
-              </div>
-            </form>
-          </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary" id="pwdSubmit">提交</button>
+              <button type="button" class="btn btn-primary" id="sendPwdCaptcha">发送验证码</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
-    <button class="btn btn-primary" type="login" id="login">登录</button>
+    <div class=" modal fade" id="register" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <form>
+            <div class="modal-header">
+              <h5 class="modal-title">用户注册</h5>
+              <button type="button" class="close" data-dismiss="modal">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group row">
+                <label for="regEmail" class="col-form-label col-3">邮箱</label>
+                <input type="email" class="form-control col-8" name="regEmail" id="regEmail" placeholder="请输入注册邮箱"
+                  required>
+              </div>
+              <div class=" form-group row">
+                <label for="regCaptcha" class="col-form-label col-3">验证码</label>
+                <input type="text" class="form-control col-8" name="regCaptcha" id="regCaptcha" placeholder="请输入验证码"
+                  required>
+              </div>
+              <div class="form-group row">
+                <label for="registerPwd" class="col-form-label col-3">密码</label>
+                <input type="password" class="form-control col-8" name="registerPwd" id="registerPwd"
+                  placeholder="请输入密码" required minlength="6" maxlength="12">
+              </div>
+              <div class="form-group row">
+                <label for="confirmPwd" class="col-form-label col-3">确认密码</label>
+                <input type="password" class="form-control col-8" name="confirmPwd" id="confirmPwd"
+                  placeholder="请再次输入密码" required>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary" id="regSubmit">提交</button>
+              <button type="button" class="btn btn-primary" id="sendCaptcha">发送验证码</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
     <!-- Modal -->
     <div class="modal fade" id="error" tabindex="-1" role="dialog">
       <div class=" modal-dialog" role="document">
@@ -170,37 +165,43 @@
 </body>
 <script>
   $('#login').click(function () {
-    // Ajax请求
-    $.ajax({
-      type: "GET",
-      url: "service.php?userName=" + $('#userName').val(),
-      dateType: "json",
-      success: function (date) {
-        if (date.success) {
-          location.href = "index.html";
-        } else {
-          alert(date.msg);
+    //Ajax请求
+    let userName = document.getElementById('userName');
+    let password = document.getElementById('password');
+    if (userName.validity.valid && password.validity.valid) {
+      $.ajax({
+        type: "GET",
+        url: "service.php?userName=" + $('#userName').val(),
+        dateType: "json",
+        success: function (data) {
+          if (data.success) {
+            location.href = "index.html";
+          } else {
+            alert(data.msg);
+          }
+        },
+        error: function (jqXHR) {
+          alert("发生错误：[" + jqXHR.status + '] ' + jqXHR.statusText);
+          if (confirm('是否以游客身份访问？'))
+            location.href = "index.html";
         }
-      },
-      error: function (jqXHR) {
-        alert("发生错误：" + jqXHR.status);
-      }
-    })
+      })
+    }
   })
 
   $('#confirmPwd').on('input', function () {
-    let regPwd = $('#registerPwd').val();
-    let confPwd = $('#confirmPwd').val();
-    if (regPwd != confPwd) {
-      document.getElementById('confirmPwd').setCustomValidity("密码不一致");
+    let regPwd = document.getElementById('registerPwd');
+    let confPwd = document.getElementById('confirmPwd');
+    if (regPwd.value != confPwd.value) {
+      confPwd.setCustomValidity("密码不一致");
     } else {
-      document.getElementById('confirmPwd').setCustomValidity("");
+      confPwd.setCustomValidity("");
     }
   })
   //发送邮件验证码
   $('#sendCaptcha,#sendPwdCaptcha').click(function () {
     let email = $(this).parent().prev().find('input').val();
-    let captcha = $(this).parent().prev().find('input[type=email]').val();
+    let captcha = $(this).parent().prev().find('input[type=text]').val();
     if (!email) {
       alert('请输入邮箱地址');
       return;
@@ -218,23 +219,26 @@
     //后台发送验证码邮件
     $.ajax({
       type: "POST",
-      url: "captcha.php?email=" + email,
+      url: "captcha.php",
       dateType: "json",
-      success: function (date) {
+      date: {
+        email: email
+      },
+      success: function (data) {
         if (date.success) {
-          var realCaptcha = date.msg;
+          var realCaptcha = data.msg;
         } else {
-          alert(date.msg);
+          alert(data.msg);
         }
       },
       error: function (jqXHR) {
-        alert("发生错误：" + jqXHR.status);
+        alert("发生错误：[" + jqXHR.status + '] ' + jqXHR.statusText);
       }
     })
   })
   //验证码校对
   $('#regSubmit,#pwdSubmit').click(function () {
-    alert('验证码错误！');
+    let captcha = $(this).parent().prev().find('input[type=text]').val();
     if (captcha != realCaptcha) {
       alert('验证码错误！');
       return;
